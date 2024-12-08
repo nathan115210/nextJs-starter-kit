@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-import AuthButtonGroup from "@/components/app-navbar/auth-button-group";
+import AuthButton from "@/components/app-navbar/auth-button";
 import { NavMenuItemProps } from "@/types/types";
 
 export default function MobileNavMenu({
@@ -26,7 +26,7 @@ export default function MobileNavMenu({
           </Link>
         );
       })}
-      <AuthButtonGroup />
+      <AuthButton />
     </div>
   );
 }

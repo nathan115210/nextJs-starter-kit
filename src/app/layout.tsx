@@ -1,5 +1,6 @@
-import { ReactNode } from "react";
+import { ReactNode, Suspense } from "react";
 
+import LoadingPage from "@/app/loading";
 import NavBar from "@/components/app-navbar/nav-bar";
 import { ThemeProvider } from "@/components/theme-provider";
 
@@ -32,7 +33,7 @@ export default function RootLayout({
         >
           <NavBar />
           <main className="flex-grow overflow-auto bg-[url(/bg.svg)] bg-cover">
-            {children}
+            <Suspense fallback={<LoadingPage />}>{children}</Suspense>
           </main>
         </ThemeProvider>
       </body>

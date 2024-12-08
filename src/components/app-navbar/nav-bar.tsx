@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { SVGProps } from "react";
 
-import AuthButtonGroup from "@/components/app-navbar/auth-button-group";
+import AuthButton from "@/components/app-navbar/auth-button";
 import MobileNavMenu from "@/components/app-navbar/mobile-nav-menu";
 import { ThemeSwitcher } from "@/components/app-navbar/theme-switcher";
 import { Button } from "@/components/ui/button";
@@ -17,18 +17,26 @@ import {
 import { NavMenuItemProps } from "@/types/types";
 
 import { IconPackages } from "@tabler/icons-react";
+import { useSession } from "next-auth/react";
+
+const menuItems: NavMenuItemProps[] = [
+  {
+    label: "Home",
+    href: "/",
+  },
+];
 
 export default function NavBar() {
-  const menuItems: NavMenuItemProps[] = [
-    {
-      label: "Home",
-      href: "/",
-    },
-    {
-      label: "Not Found 404",
-      href: "/not-found",
-    },
-  ];
+  const { status } = useSession();
+
+  React.useEffect(() => {
+    if (status === "authenticated") {
+      menuItems.push({
+        label: "Profile",
+        href: "/profile",
+      });
+    }
+  }, [status]);
 
   const pagePath = usePathname();
 
@@ -56,7 +64,7 @@ export default function NavBar() {
           })}
         </nav>
         <div className="flex items-center gap-4">
-          <AuthButtonGroup onDesktopNavBar />
+          <AuthButton className="hidden gap-4 md:flex" />
           <ThemeSwitcher />
           <Sheet>
             <SheetTrigger asChild>
