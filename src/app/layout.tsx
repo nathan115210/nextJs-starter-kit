@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 
-import AppNavbar from "@/components/app-navbar";
-import Providers from "@/components/providers";
+import NavBar from "@/components/app-navbar/nav-bar";
+import { ThemeProvider } from "@/components/theme-provider";
 
 import type { Metadata } from "next";
 
@@ -23,13 +23,18 @@ export default function RootLayout({
         rel="icon"
         href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📦</text></svg>"
       />
-      <body className="h-screen w-screen">
-        <Providers>
-          <AppNavbar />
+      <body className="flex h-screen w-screen flex-col">
+        <ThemeProvider
+          enableSystem
+          disableTransitionOnChange
+          attribute="class"
+          defaultTheme="system"
+        >
+          <NavBar />
           <main className="flex-grow overflow-auto bg-[url(/bg.svg)] bg-cover">
             {children}
           </main>
-        </Providers>
+        </ThemeProvider>
       </body>
     </html>
   );
