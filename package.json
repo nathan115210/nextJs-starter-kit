@@ -14,9 +14,13 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
-    "format": "prettier src/ --write --ignore-path .prettierignore"
+    "format": "prettier src/ --write --ignore-path .prettierignore",
+    "codegen": " npx graphql-codegen --config codegen.ts --watch"
   },
   "dependencies": {
+    "@contentful/rich-text-html-renderer": "^17.0.0",
+    "@next/env": "^15.1.0",
+    "@radix-ui/react-accordion": "^1.2.1",
     "@radix-ui/react-avatar": "^1.1.1",
     "@radix-ui/react-dialog": "^1.1.2",
     "@radix-ui/react-dropdown-menu": "^2.1.2",
@@ -26,6 +30,8 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^11.13.1",
+    "graphql": "^16.9.0",
+    "graphql-tag": "^2.12.6",
     "lucide-react": "^0.468.0",
     "next": "15.0.4",
     "next-auth": "^4.24.11",
@@ -37,6 +43,12 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@0no-co/graphqlsp": "^1.12.16",
+    "@graphql-codegen/cli": "5.0.3",
+    "@graphql-codegen/client-preset": "4.5.1",
+    "@graphql-codegen/import-types-preset": "^3.0.0",
+    "@graphql-codegen/schema-ast": "^4.1.0",
+    "@parcel/watcher": "^2.5.0",
     "@trivago/prettier-plugin-sort-imports": "^5.0.1",
     "@types/node": "^20",
     "@types/react": "^19",
@@ -50,7 +62,7 @@
     "prettier-plugin-svelte": "^3.3.2",
     "prettier-plugin-tailwindcss": "^0.6.9",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5"
+    "typescript": "^5.7.2"
   },
   "license": "MIT"
 }
